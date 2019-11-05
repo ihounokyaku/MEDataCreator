@@ -7,20 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DCAFB0B35CA75CC1C879956 /* Pods_MaximumEnglishDataCreator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86D2BD375EA5B580FFE9853 /* Pods_MaximumEnglishDataCreator.framework */; };
+		C472E6EC235C03340049763B /* CreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472E6EB235C03340049763B /* CreateVC.swift */; };
+		C493AAB2235B8438000F86F5 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493AAB1235B8438000F86F5 /* JSONManager.swift */; };
+		C493AAB6235B85BF000F86F5 /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493AAB5235B85BF000F86F5 /* Prefs.swift */; };
+		C493AAB8235B865F000F86F5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493AAB7235B865F000F86F5 /* Extensions.swift */; };
+		C493AABA235B86E4000F86F5 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493AAB9235B86E4000F86F5 /* Alerts.swift */; };
 		C4A0BCB2235B5495000EA12F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCB1235B5495000EA12F /* AppDelegate.swift */; };
-		C4A0BCB4235B5495000EA12F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCB3235B5495000EA12F /* ViewController.swift */; };
+		C4A0BCB4235B5495000EA12F /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCB3235B5495000EA12F /* StartView.swift */; };
 		C4A0BCB6235B5496000EA12F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A0BCB5235B5496000EA12F /* Assets.xcassets */; };
 		C4A0BCB9235B5496000EA12F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A0BCB7235B5496000EA12F /* Main.storyboard */; };
+		C4A0BCC5235B55DF000EA12F /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC2235B55D9000EA12F /* FileDropView.swift */; };
+		C4A0BCC6235B55DF000EA12F /* MixDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC3235B55D9000EA12F /* MixDropView.swift */; };
+		C4A0BCC7235B55DF000EA12F /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC4235B55D9000EA12F /* DropView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04B38E6DEC8DD1FD58FD4861 /* Pods-MaximumEnglishDataCreator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaximumEnglishDataCreator.debug.xcconfig"; path = "Target Support Files/Pods-MaximumEnglishDataCreator/Pods-MaximumEnglishDataCreator.debug.xcconfig"; sourceTree = "<group>"; };
+		C472E6EB235C03340049763B /* CreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVC.swift; sourceTree = "<group>"; };
+		C493AAB1235B8438000F86F5 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		C493AAB5235B85BF000F86F5 /* Prefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
+		C493AAB7235B865F000F86F5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C493AAB9235B86E4000F86F5 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		C4A0BCAE235B5495000EA12F /* MaximumEnglishDataCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximumEnglishDataCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A0BCB1235B5495000EA12F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4A0BCB3235B5495000EA12F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C4A0BCB3235B5495000EA12F /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C4A0BCB5235B5496000EA12F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4A0BCB8235B5496000EA12F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4A0BCBA235B5496000EA12F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A0BCBB235B5496000EA12F /* MaximumEnglishDataCreator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MaximumEnglishDataCreator.entitlements; sourceTree = "<group>"; };
+		C4A0BCC2235B55D9000EA12F /* FileDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropView.swift; sourceTree = "<group>"; };
+		C4A0BCC3235B55D9000EA12F /* MixDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixDropView.swift; sourceTree = "<group>"; };
+		C4A0BCC4235B55D9000EA12F /* DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		E6A8B718CEAE66A5A97C3E8E /* Pods-MaximumEnglishDataCreator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaximumEnglishDataCreator.release.xcconfig"; path = "Target Support Files/Pods-MaximumEnglishDataCreator/Pods-MaximumEnglishDataCreator.release.xcconfig"; sourceTree = "<group>"; };
+		F86D2BD375EA5B580FFE9853 /* Pods_MaximumEnglishDataCreator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaximumEnglishDataCreator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DCAFB0B35CA75CC1C879956 /* Pods_MaximumEnglishDataCreator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +60,8 @@
 			children = (
 				C4A0BCB0235B5495000EA12F /* MaximumEnglishDataCreator */,
 				C4A0BCAF235B5495000EA12F /* Products */,
+				D44EEAD9270F31B11FC423D9 /* Pods */,
+				D7C287607464B742CC4C3685 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,13 +77,46 @@
 			isa = PBXGroup;
 			children = (
 				C4A0BCB1235B5495000EA12F /* AppDelegate.swift */,
-				C4A0BCB3235B5495000EA12F /* ViewController.swift */,
+				C4A0BCB3235B5495000EA12F /* StartView.swift */,
+				C472E6EB235C03340049763B /* CreateVC.swift */,
+				C493AAB1235B8438000F86F5 /* JSONManager.swift */,
+				C493AAB7235B865F000F86F5 /* Extensions.swift */,
+				C493AAB9235B86E4000F86F5 /* Alerts.swift */,
+				C4A0BCC1235B55D9000EA12F /* DropView */,
 				C4A0BCB5235B5496000EA12F /* Assets.xcassets */,
 				C4A0BCB7235B5496000EA12F /* Main.storyboard */,
 				C4A0BCBA235B5496000EA12F /* Info.plist */,
 				C4A0BCBB235B5496000EA12F /* MaximumEnglishDataCreator.entitlements */,
+				C493AAB5235B85BF000F86F5 /* Prefs.swift */,
 			);
 			path = MaximumEnglishDataCreator;
+			sourceTree = "<group>";
+		};
+		C4A0BCC1235B55D9000EA12F /* DropView */ = {
+			isa = PBXGroup;
+			children = (
+				C4A0BCC2235B55D9000EA12F /* FileDropView.swift */,
+				C4A0BCC3235B55D9000EA12F /* MixDropView.swift */,
+				C4A0BCC4235B55D9000EA12F /* DropView.swift */,
+			);
+			path = DropView;
+			sourceTree = "<group>";
+		};
+		D44EEAD9270F31B11FC423D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04B38E6DEC8DD1FD58FD4861 /* Pods-MaximumEnglishDataCreator.debug.xcconfig */,
+				E6A8B718CEAE66A5A97C3E8E /* Pods-MaximumEnglishDataCreator.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D7C287607464B742CC4C3685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86D2BD375EA5B580FFE9853 /* Pods_MaximumEnglishDataCreator.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A0BCBE235B5496000EA12F /* Build configuration list for PBXNativeTarget "MaximumEnglishDataCreator" */;
 			buildPhases = (
+				A7AB0045B70F61D42DED3FD2 /* [CP] Check Pods Manifest.lock */,
 				C4A0BCAA235B5495000EA12F /* Sources */,
 				C4A0BCAB235B5495000EA12F /* Frameworks */,
 				C4A0BCAC235B5495000EA12F /* Resources */,
+				D58FC0BA6A4A944CEA468FCB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -95,6 +153,11 @@
 				TargetAttributes = {
 					C4A0BCAD235B5495000EA12F = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -128,13 +191,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A7AB0045B70F61D42DED3FD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MaximumEnglishDataCreator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D58FC0BA6A4A944CEA468FCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MaximumEnglishDataCreator/Pods-MaximumEnglishDataCreator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MaximumEnglishDataCreator/Pods-MaximumEnglishDataCreator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C4A0BCAA235B5495000EA12F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4A0BCB4235B5495000EA12F /* ViewController.swift in Sources */,
+				C493AAB6235B85BF000F86F5 /* Prefs.swift in Sources */,
+				C4A0BCB4235B5495000EA12F /* StartView.swift in Sources */,
+				C472E6EC235C03340049763B /* CreateVC.swift in Sources */,
 				C4A0BCB2235B5495000EA12F /* AppDelegate.swift in Sources */,
+				C493AAB8235B865F000F86F5 /* Extensions.swift in Sources */,
+				C4A0BCC6235B55DF000EA12F /* MixDropView.swift in Sources */,
+				C4A0BCC5235B55DF000EA12F /* FileDropView.swift in Sources */,
+				C4A0BCC7235B55DF000EA12F /* DropView.swift in Sources */,
+				C493AABA235B86E4000F86F5 /* Alerts.swift in Sources */,
+				C493AAB2235B8438000F86F5 /* JSONManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,9 +387,9 @@
 		};
 		C4A0BCBF235B5496000EA12F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04B38E6DEC8DD1FD58FD4861 /* Pods-MaximumEnglishDataCreator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MaximumEnglishDataCreator/MaximumEnglishDataCreator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UQ3BB547F3;
@@ -288,9 +406,9 @@
 		};
 		C4A0BCC0235B5496000EA12F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6A8B718CEAE66A5A97C3E8E /* Pods-MaximumEnglishDataCreator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MaximumEnglishDataCreator/MaximumEnglishDataCreator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UQ3BB547F3;

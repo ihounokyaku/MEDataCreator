@@ -29,21 +29,20 @@ class StartVC: NSViewController, DropViewDelegate {
             return
         }
         
-        JSONManager.JSONFileURL = url
-        self.presentCreateVC()
+        self.presentCreateVC(withURL:url)
         
     }
     
     @IBAction func createNewPressed(_ sender: Any) {
-        JSONManager.JSONFileURL = nil
-        self.presentCreateVC()
+        self.presentCreateVC(withURL:nil)
     }
     
     
     
-    func presentCreateVC() {
+    func presentCreateVC(withURL url:URL?) {
         
         let vc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "create") as! CreateVC
+        vc.jsonManager = JSONManager(jsonURL: url)
         self.presentAsSheet(vc)
     }
     

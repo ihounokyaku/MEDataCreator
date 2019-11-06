@@ -10,6 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 
+
 enum LevelName:String, CaseIterable {
     
     case beginner = "Beginner"
@@ -62,73 +63,108 @@ enum JSONKey {
 
 class JSONManager: NSObject {
     
-    static var JSONFileURL:URL?
+    var json:JSON
     
-    static var JSONFile:JSON {
+    var jsonURL:URL?
+    
+    init(jsonURL:URL?) {
         
-        get {
-            
-            var url = JSONFileURL
-            
-            
-            if url == nil {
-                var count = 1
-                let originalFileName = "InitialData"
-                var newURL = Prefs.DefaultFolder.appendingPathComponent(originalFileName + ".json")
-                while newURL.fileExists {
-                    let newName = originalFileName + "-" + String(format: "%2d", count)
-                    newURL = Prefs.DefaultFolder.appendingPathComponent(newName + ".json")
-                    count += 1
-                }
-                JSONFileURL = newURL
-                url = newURL
-            }
-            
-            
-            if url!.isFileURL {
-                
-                if !url!.fileExists {
-                    
-                    let json:JSON = [:]
-                    
-                    FileManager.WriteTextToFile(text: json.rawString()!, toFolder: Prefs.DefaultFolder, fileName: url!.lastPathComponent)
-                    
-                }
-                
-                return FileManager.ReadJSON(atURL: url!) ?? [:]
-                
-            }
         
-            return [:]
-
+        if let url = jsonURL, let data = try? Data(contentsOf: url), let realJSON = try? JSON(data: data), realJSON[JSONKey.levels.keyValue()].array != nil {
+            
+            self.jsonURL = url
+            self.json = realJSON
+            
+        } else {
+            
+            self.json = JSON()
+            
         }
         
-        set {
-            guard let nv = newValue.rawString(), let fileURL = JSONFileURL, fileURL.isFileURL else {
-                
-                Alert.PresentErrorAlert(text: "Error updating file")
-                
-                return
-                
-            }
-            
-            FileManager.WriteTextToFile(text: nv, toFolder: fileURL.deletingLastPathComponent(), fileName: fileURL.lastPathComponent)
-            
-        }
+        super.init()
+        
+        self.populateLevels()
         
     }
     
+    func populateLevels() {
+        
+        let levelNames = self.levels.map { $0[JSONKey.levelID.keyValue()].stringValue }
+        var levels = [JSON]()
+        
+        for levelName in LevelName.allCases {
+            if levelNames.contains(levelName.rawValue) {
+                
+                levels.append(self.levels[levelNames.firstIndex(of: levelName.rawValue)!])
+                
+            } else {
+                
+                levels.append(JSON([JSONKey.levelID.keyValue():JSON(levelName.rawValue)]))
+                
+            }
+                
+        }
+        
+        json[JSONKey.levels.keyValue()] = JSON(levels)
+        
+    }
     
-    static private var InitiatedLevels:[JSON]?
+   
+    func setLessons(_ lessons:[JSON], forLevelAtIndex index:Int) {
+        
+        guard self.levels.count > index else {
+            print("levels less \(self.levels.count) vs \(index)")
+            return
+            
+        }
+        
+        self.json[JSONKey.levels.keyValue()][index][JSONKey.lessons.keyValue()] = JSON(lessons)
+        
+    }
     
-    static var Levels:[JSON]!
+    func setCards(_ cards:[JSON], ofType type:String, forLessonAtIndex lessonIndex:Int, inLevelAtIndex levelIndex:Int) {
+        
+        guard self.levels.count > levelIndex, self.lessons(forLevel: self.levels[levelIndex]).count > lessonIndex else { return }
+        
+        self.json[JSONKey.levels.keyValue()][levelIndex][JSONKey.lessons.keyValue()][lessonIndex][type] = JSON(cards)
+        
+    }
+   
+
     
-    static func Lessons(forLevel level:JSON)-> [JSON] { return level[JSONKey.lessons.keyValue()].arrayValue }
+    var levels:[JSON] { return self.json[JSONKey.levels.keyValue()].arrayValue }
     
-    static func Vocabulary(forLesson lesson:JSON)->[JSON] { return lesson[JSONKey.vocabularyCards.keyValue()].arrayValue }
+    func lessons(forLevel level:JSON)-> [JSON] { return level[JSONKey.lessons.keyValue()].arrayValue }
     
-    static func Grammar(forLesson lesson:JSON)->[JSON] { return lesson[JSONKey.grammarCards.keyValue()].arrayValue }
+    func vocabulary(forLesson lesson:JSON)->[JSON] { return lesson[JSONKey.vocabularyCards.keyValue()].arrayValue }
+    
+    func grammar(forLesson lesson:JSON)->[JSON] { return lesson[JSONKey.grammarCards.keyValue()].arrayValue }
     
 
-
+    func writeFile() {
+        var fileURL = self.jsonURL
+        if fileURL == nil {
+            var count = 1
+            let originalFileName = "MEJSONData"
+            var newURL = Prefs.DefaultFolder.appendingPathComponent(originalFileName + ".json")
+            while newURL.fileExists {
+                let newName = originalFileName + "-" + String(format: "%2d", count)
+                newURL = Prefs.DefaultFolder.appendingPathComponent(newName + ".json")
+                count += 1
+            }
+            
+            fileURL = newURL
+        }
+        
+        guard let nv = self.json.rawString(), let realURL = fileURL, realURL.isFileURL else {
+            
+            Alert.PresentErrorAlert(text: "Error updating file")
+            
+            return
+            
+        }
+        
+        FileManager.WriteTextToFile(text: nv, toFolder: realURL.deletingLastPathComponent(), fileName: realURL.lastPathComponent)
+        
+    }
 }

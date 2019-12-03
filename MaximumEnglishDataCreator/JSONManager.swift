@@ -35,6 +35,7 @@ enum JSONKey {
     case cardID
     case question
     case answer
+    case notes
     
     func keyValue()->String {
         
@@ -56,9 +57,28 @@ enum JSONKey {
             return "question"
         case .answer:
             return "answer"
+        case .notes:
+            return "notes"
         }
         
     }
+}
+
+enum CardType {
+    
+    case vocab
+    case grammar
+    
+    func stringValue()->String {
+        switch self {
+        case .vocab:
+            return JSONKey.vocabularyCards.keyValue()
+        case .grammar:
+            return JSONKey.grammarCards.keyValue()
+            
+        }
+    }
+    
 }
 
 class JSONManager: NSObject {
@@ -122,14 +142,46 @@ class JSONManager: NSObject {
         
     }
     
+    func setNotes(_ notes:String, forLessonAtIndex lessonIndex:Int, inLevelAtIndex levelIndex:Int) {
+        
+        guard self.lessonExists(atIndex: lessonIndex, inLevelAtIndex: levelIndex) else { return }
+        
+        self.json[JSONKey.levels.keyValue()][levelIndex][JSONKey.lessons.keyValue()][lessonIndex][JSONKey.notes.keyValue()] = JSON(notes)
+        
+    }
+    
     func setCards(_ cards:[JSON], ofType type:String, forLessonAtIndex lessonIndex:Int, inLevelAtIndex levelIndex:Int) {
         
-        guard self.levels.count > levelIndex, self.lessons(forLevel: self.levels[levelIndex]).count > lessonIndex else { return }
+        guard self.lessonExists(atIndex: lessonIndex, inLevelAtIndex: levelIndex) else { return }
         
         self.json[JSONKey.levels.keyValue()][levelIndex][JSONKey.lessons.keyValue()][lessonIndex][type] = JSON(cards)
         
     }
-   
+    
+    func editCard(ofType type:String, atIndex cardIndex:Int, inLessonAtIndex lessonIndex:Int, inLevelAtIndex levelIndex:Int, newValue:String, forProperty property:String) {
+        
+        guard self.lessonExists(atIndex: lessonIndex, inLevelAtIndex: levelIndex) else { return }
+        
+        var cards = self.json[JSONKey.levels.keyValue()][levelIndex][JSONKey.lessons.keyValue()][lessonIndex][type].arrayValue
+        
+        if cards.count > cardIndex {
+            
+            cards[cardIndex][property] = JSON(newValue)
+            
+        } else {
+            
+            cards.append(JSON([property:newValue]))
+            
+        }
+        
+        self.setCards(cards, ofType: type, forLessonAtIndex: lessonIndex, inLevelAtIndex: levelIndex)
+        
+    }
+    
+    func lessonExists(atIndex lessonIndex:Int, inLevelAtIndex levelIndex:Int)-> Bool {
+        
+        return self.levels.count > levelIndex && self.lessons(forLevel: self.levels[levelIndex]).count > lessonIndex
+    }
 
     
     var levels:[JSON] { return self.json[JSONKey.levels.keyValue()].arrayValue }

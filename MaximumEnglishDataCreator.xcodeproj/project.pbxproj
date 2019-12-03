@@ -20,6 +20,7 @@
 		C4A0BCC5235B55DF000EA12F /* FileDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC2235B55D9000EA12F /* FileDropView.swift */; };
 		C4A0BCC6235B55DF000EA12F /* MixDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC3235B55D9000EA12F /* MixDropView.swift */; };
 		C4A0BCC7235B55DF000EA12F /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A0BCC4235B55D9000EA12F /* DropView.swift */; };
+		FC53D45223780F980057FAE0 /* CustomTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC53D45123780F980057FAE0 /* CustomTextCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C4A0BCC4235B55D9000EA12F /* DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
 		E6A8B718CEAE66A5A97C3E8E /* Pods-MaximumEnglishDataCreator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaximumEnglishDataCreator.release.xcconfig"; path = "Target Support Files/Pods-MaximumEnglishDataCreator/Pods-MaximumEnglishDataCreator.release.xcconfig"; sourceTree = "<group>"; };
 		F86D2BD375EA5B580FFE9853 /* Pods_MaximumEnglishDataCreator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaximumEnglishDataCreator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC53D45123780F980057FAE0 /* CustomTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				C4A0BCB3235B5495000EA12F /* StartView.swift */,
 				C472E6EB235C03340049763B /* CreateVC.swift */,
 				C493AAB1235B8438000F86F5 /* JSONManager.swift */,
+				FC53D45123780F980057FAE0 /* CustomTextCell.swift */,
 				C493AAB7235B865F000F86F5 /* Extensions.swift */,
 				C493AAB9235B86E4000F86F5 /* Alerts.swift */,
 				C4A0BCC1235B55D9000EA12F /* DropView */,
@@ -248,6 +251,7 @@
 				C472E6EC235C03340049763B /* CreateVC.swift in Sources */,
 				C4A0BCB2235B5495000EA12F /* AppDelegate.swift in Sources */,
 				C493AAB8235B865F000F86F5 /* Extensions.swift in Sources */,
+				FC53D45223780F980057FAE0 /* CustomTextCell.swift in Sources */,
 				C4A0BCC6235B55DF000EA12F /* MixDropView.swift in Sources */,
 				C4A0BCC5235B55DF000EA12F /* FileDropView.swift in Sources */,
 				C4A0BCC7235B55DF000EA12F /* DropView.swift in Sources */,

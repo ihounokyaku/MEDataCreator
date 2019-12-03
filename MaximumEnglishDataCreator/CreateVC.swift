@@ -22,6 +22,10 @@ class CreateVC: NSViewController, DropViewDelegate {
     @IBOutlet weak var lessonAddButton: NSButton!
     @IBOutlet weak var lessonRemoveButton: NSButton!
     @IBOutlet weak var saveButton: NSButton!
+    @IBOutlet var notesField: NSTextView!
+    
+    
+    
     
     var jsonManager:JSONManager!
     
@@ -69,6 +73,7 @@ class CreateVC: NSViewController, DropViewDelegate {
         self.vocabTable.dataSource = self
         self.grammarTable.delegate = self
         self.grammarTable.dataSource = self
+        self.notesField.delegate = self
         self.setLevelPicker()
     }
     
@@ -169,6 +174,7 @@ class CreateVC: NSViewController, DropViewDelegate {
     }
     
     
+    
     @IBAction func lessonChangePressed(_ sender: NSButton) {
         
         guard self.selectedLesson != nil else { return }
@@ -178,6 +184,15 @@ class CreateVC: NSViewController, DropViewDelegate {
         
         self.setLessonPicker(selectIndex: newIndex)
         self.markChanged()
+    }
+    
+   
+    func changeLessonNotes(to newText:String) {
+        
+        guard self.selectedLesson != nil else { return }
+        
+        self.jsonManager.setNotes(newText, forLessonAtIndex: self.lessonSelector.indexOfSelectedItem, inLevelAtIndex: self.levelSelector.indexOfSelectedItem)
+        
     }
     
     
@@ -208,15 +223,20 @@ class CreateVC: NSViewController, DropViewDelegate {
         for row in rows {
             var dic = [String:String]()
             let values = row.components(separatedBy: ",")
-            if values.count == 2 {
-                dic[JSONKey.question.keyValue()] = values[0]
-                dic[JSONKey.answer.keyValue()] = values[1]
-                cards.append(JSON(dic))
-            }
+            
+            guard values.count >= 2, values[0].trimmingCharacters(in: .whitespacesAndNewlines) != "", values[1].trimmingCharacters(in: .whitespacesAndNewlines) != "" else {continue}
+            
+            
+            dic[JSONKey.question.keyValue()] = values[0].replacingOccurrences(of: "\r", with: "")
+            dic[JSONKey.answer.keyValue()] = values[1].replacingOccurrences(of: "\r", with: "")
+            
+            if values.count > 2 { dic[JSONKey.notes.keyValue()] = values[2] }
+            
+            cards.append(JSON(dic))
             
         }
         
-        if cards.count < 1 { return }
+        if cards.count < 0 { return }
         
         let type = dropView == self.vocabDropView ? JSONKey.vocabularyCards.keyValue() : JSONKey.grammarCards.keyValue()
         
@@ -245,6 +265,33 @@ class CreateVC: NSViewController, DropViewDelegate {
         self.dismiss(self)
     }
     
+    
+    @IBAction func tableViewTextChanged(_ sender: NSTextField) {
+        var type:CardType = .vocab
+        var row = self.vocabTable.row(for: sender)
+        var column = self.vocabTable.column(for: sender)
+        
+        
+        if row < 0 {
+            type = .grammar
+            row = self.grammarTable.row(for: sender)
+            column = self.grammarTable.column(for: sender)
+        }
+        
+        guard row >= 0 && column >= 0, column < ColumnType.allCases.count else {
+            print("something messed up \(row) \(column)")
+            return }
+        
+        let property = ColumnType.allCases[column].stringValue()
+        
+        self.jsonManager.editCard(ofType: type.stringValue(), atIndex: row, inLessonAtIndex: self.lessonSelector.indexOfSelectedItem, inLevelAtIndex: self.levelSelector.indexOfSelectedItem, newValue: sender.stringValue, forProperty: property)
+        print("changed")
+        self.changed = true
+        self.toggleButtons()
+        
+    }
+    
+    
 }
 
 extension CreateVC:NSTableViewDelegate, NSTableViewDataSource {
@@ -266,9 +313,22 @@ extension CreateVC:NSTableViewDelegate, NSTableViewDataSource {
         let card = lesson[cardType].arrayValue[row]
        
         cell.textField?.stringValue = card[field].stringValue
-
+        
+        
+        
+        
         return cell
     }
     
+}
+
+extension CreateVC:NSTextViewDelegate {
+    
+    func textDidEndEditing(_ notification: Notification) {
+        
+        guard let textField = notification.object as? NSTextField else { return }
+        
+        self.changeLessonNotes(to: textField.stringValue)
+    }
     
 }
